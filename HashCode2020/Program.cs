@@ -72,6 +72,10 @@ namespace HashCode2020
 
             librarySolution.ForEach(library =>
             {
+                if (!library.KeyValue.Value.Any())
+                {
+                    return;
+                }
                 streamWriter.WriteLine($"{library.libary.LibraryId} {library.KeyValue.Value.Count}");
                 streamWriter.WriteLine(string.Join(" ", library.KeyValue.Value.Select(x => x.Id)));
             });
