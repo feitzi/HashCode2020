@@ -27,10 +27,10 @@ namespace HashCode2020
                 .WriteTo.Console()
                 .CreateLogger();
             //
-            CalculateSolutionForInputFile("a_example.txt");
-            CalculateSolutionForInputFile("b_read_on.txt");
+            // CalculateSolutionForInputFile("a_example.txt");
+            // CalculateSolutionForInputFile("b_read_on.txt");
             // CalculateSolutionForInputFile("c_incunabula.txt");
-            // CalculateSolutionForInputFile("d_tough_choices.txt");
+            CalculateSolutionForInputFile("d_tough_choices.txt");
             // CalculateSolutionForInputFile("e_so_many_books.txt");
             // CalculateSolutionForInputFile("f_libraries_of_the_world.txt");
         }
@@ -46,11 +46,12 @@ namespace HashCode2020
             var availableLibrary = libraryProblem.Libraries.Select(x => x.Value).ToList();
             while (availableDays > 0)
             {
-                var nextLibrary = availableLibrary
+                var librariessSorted = availableLibrary
                     .Select(x =>
                         new LibraryInternSolution(x, x.MaxPointsForPeriod(availableDays, libraryProblem.Books)))
-                    .OrderByDescending(x => x.KeyValue.Key)
-                    .FirstOrDefault();
+                    .OrderByDescending(x => x.KeyValue.Key);
+                   
+                var nextLibrary =  librariessSorted.FirstOrDefault();
                 if (nextLibrary?.libary == null)
                 {
                     break;
@@ -60,6 +61,10 @@ namespace HashCode2020
                 availableLibrary.Remove(nextLibrary.libary);
                 availableLibrary.ForEach(x => x.MarkBooksAsProcessedByOtherLibrary(nextLibrary.KeyValue.Value));
                 availableDays -= nextLibrary.libary.SetupTime;
+
+                availableLibrary = librariessSorted.Where(x => x.KeyValue.Key > 0)
+                    .Select(x => x.libary)
+                    .ToList();
             }
 
             librarySolution = librarySolution.Where(x => x.KeyValue.Value.Any()).ToList();
