@@ -27,9 +27,9 @@ namespace HashCode2020
                 .WriteTo.Console()
                 .CreateLogger();
             //
-            // CalculateSolutionForInputFile("a_example.txt");
-            // CalculateSolutionForInputFile("b_read_on.txt");
-            CalculateSolutionForInputFile("c_incunabula.txt");
+            CalculateSolutionForInputFile("a_example.txt");
+            CalculateSolutionForInputFile("b_read_on.txt");
+            // CalculateSolutionForInputFile("c_incunabula.txt");
             // CalculateSolutionForInputFile("d_tough_choices.txt");
             // CalculateSolutionForInputFile("e_so_many_books.txt");
             // CalculateSolutionForInputFile("f_libraries_of_the_world.txt");
@@ -59,6 +59,7 @@ namespace HashCode2020
                 librarySolution.Add(nextLibrary);
                 availableLibrary.Remove(nextLibrary.libary);
                 availableLibrary.ForEach(x => x.MarkBooksAsProcessedByOtherLibrary(nextLibrary.KeyValue.Value));
+                availableDays -= nextLibrary.libary.SetupTime;
             }
 
             WriteOutputFile(librarySolution, inputFileName);
