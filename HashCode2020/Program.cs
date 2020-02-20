@@ -1,5 +1,6 @@
 ﻿using System;
 using FileImporter;
+using Serilog;
 
 namespace HashCode2020
 {
@@ -7,7 +8,14 @@ namespace HashCode2020
     {
         private static void Main(string[] args)
         {
-            FileImporter.FileImporter.ReadAllFromFile("c_urgent.in");
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .CreateLogger();
+            
+           var inputFile = FileImporter.FileImporter.ReadAllFromFile("c_urgent.in");
+            
+            Log.Information("Input is {@First}", inputFile.HeaderLine);
+            
         }
     }
 }
