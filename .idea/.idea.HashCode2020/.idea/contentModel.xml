@@ -2,6 +2,21 @@
 <project version="4">
   <component name="ContentModelStore">
     <e p="C:\sources\HashCode2020" t="IncludeFlat">
+      <e p=".git\info\exclude" t="IncludeRecursive" />
+      <e p="FileImporter" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="c_urgent.in" t="Include" />
+        <e p="FileImporter.cs" t="Include" />
+        <e p="FileImporter.csproj" t="IncludeRecursive" />
+        <e p="GoogleFile.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="FileImporter.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
       <e p="HashCode2020" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="HashCode2020.csproj" t="IncludeRecursive" />
