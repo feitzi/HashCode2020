@@ -12,12 +12,15 @@ namespace FileImporter
         public List<Book> BooksProcessed { get; }
         
         public int MaxScore { get; }
+        public int DaysToFast { get; }
 
-        public LibraryInternSolution(Library libary, List<Book> booksProcessed, int maxScore)
+
+        public LibraryInternSolution(Library libary, List<Book> booksProcessed, int maxScore, int daysToFast)
         {
             this.libary = libary;
             BooksProcessed = booksProcessed;
             MaxScore = maxScore;
+            DaysToFast = daysToFast;
         }
     }
 }

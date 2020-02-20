@@ -15,10 +15,10 @@ namespace HashCode2020
                 .WriteTo.Console()
                 .CreateLogger();
             //
-            // CalculateSolutionForInputFile("a_example.txt");
+             CalculateSolutionForInputFile("a_example.txt");
             CalculateSolutionForInputFile("b_read_on.txt");
             // CalculateSolutionForInputFile("c_incunabula.txt");
-            CalculateSolutionForInputFile("d_tough_choices.txt");
+            // CalculateSolutionForInputFile("d_tough_choices.txt");
             // CalculateSolutionForInputFile("e_so_many_books.txt");
             // CalculateSolutionForInputFile("f_libraries_of_the_world.txt");
         }
@@ -37,9 +37,32 @@ namespace HashCode2020
                 var librariessSorted = availableLibrary
                     .Select(x =>
                         x.MaxPointsForPeriod(availableDays, libraryProblem.Books))
-                    .OrderByDescending(x => x.MaxScore);
+                    .OrderByDescending(x => x.MaxScore).ToList();
 
-                var nextLibrary = librariessSorted.FirstOrDefault();
+                var index = 1;
+                var bestCandidateFound = false;
+                var nextLibrary = librariessSorted.First();
+                while (!bestCandidateFound || index < librariessSorted.Count)
+                {
+                    if (nextLibrary.DaysToFast <= 0)
+                    {
+                        break;
+                    }
+
+                    if (librariessSorted[index].libary.SetupTime < nextLibrary.DaysToFast)
+                    {
+                        nextLibrary = librariessSorted[index];
+                        continue;
+                    }
+                    else
+                    {
+                        bestCandidateFound = true;
+                    }
+
+                    index++;
+                }
+
+
                 if (nextLibrary?.libary == null)
                 {
                     break;

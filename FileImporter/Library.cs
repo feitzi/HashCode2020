@@ -37,13 +37,15 @@ namespace FileImporter
         public LibraryInternSolution MaxPointsForPeriod(int availableDays, IDictionary<int, Book> books)
         {
             var workingPeriod = availableDays - SetupTime;
-            if (workingPeriod <= 0) return new LibraryInternSolution(this, new List<Book>(), 0);
+            if (workingPeriod <= 0) return new LibraryInternSolution(this, new List<Book>(), 0, 0);
 
             var possibleScore = 0;
             var maxPossibleBooksToProcess = workingPeriod * BooksPerDay;
             maxPossibleBooksToProcess = maxPossibleBooksToProcess > BooksOrderedByScore.Count()
                 ? BooksOrderedByScore.Count()
                 : maxPossibleBooksToProcess;
+            
+            
 
             var booksWhichAreProcessed = new List<Book>();
             for (int i = 0; i < maxPossibleBooksToProcess; i++)
@@ -53,7 +55,11 @@ namespace FileImporter
                 booksWhichAreProcessed.Add(book);
             }
 
-            return new LibraryInternSolution(this, booksWhichAreProcessed, possibleScore);
+
+            var daysToFast = availableDays - (booksWhichAreProcessed.Count / BooksPerDay);
+            
+
+            return new LibraryInternSolution(this, booksWhichAreProcessed, possibleScore, daysToFast);
         }
     }
 }
