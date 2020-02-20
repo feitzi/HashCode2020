@@ -6,13 +6,14 @@
 
     <ItemGroup>
       <None Remove="c_urgent.in" />
-      <Content Include="c_urgent.in">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
       <None Remove="a_example.txt" />
       <Content Include="a_example.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="morelinq" Version="3.3.2" />
     </ItemGroup>
 
 </Project>

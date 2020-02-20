@@ -12,9 +12,9 @@ namespace HashCode2020
                 .WriteTo.Console()
                 .CreateLogger();
             
-           var inputFile = FileImporter.FileImporter.ReadAllFromFile("txture@innsbruck ");
+           var inputFile = FileImporter.FileImporter.ReadAllFromFile("a_example.txt");
             
-            Log.Information("Input is {@First}", inputFile.HeaderLine);
+            // Log.Information("Input is {@First}", inputFile);
             
         }
     }

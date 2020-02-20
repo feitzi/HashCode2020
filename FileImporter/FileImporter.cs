@@ -6,10 +6,14 @@ namespace FileImporter
 {
     public static class FileImporter
     {
-        public static GoogleFile ReadAllFromFile(string fileName)
+        public static ParsedLibraryProblem ReadAllFromFile(string fileName)
         {
-            var allLines = File.ReadAllLines(fileName);
-            return new GoogleFile(allLines.First(), allLines.Skip(1).ToList(), fileName);
+            FileStream fileStream = File.OpenRead(fileName);
+            var streamReader = new StreamReader(fileStream);
+
+            return new ParsedLibraryProblem(streamReader);
+
         }
     }
+
 }
