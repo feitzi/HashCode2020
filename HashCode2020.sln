@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashCode2020", "HashCode2020\HashCode2020.csproj", "{11138D95-3710-4F14-B6F8-6E9248EF79BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11138D95-3710-4F14-B6F8-6E9248EF79BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11138D95-3710-4F14-B6F8-6E9248EF79BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11138D95-3710-4F14-B6F8-6E9248EF79BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11138D95-3710-4F14-B6F8-6E9248EF79BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
