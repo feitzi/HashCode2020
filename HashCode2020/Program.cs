@@ -27,7 +27,17 @@ namespace HashCode2020
                 .WriteTo.Console()
                 .CreateLogger();
 
-            var libraryProblem = FileImporter.FileImporter.ReadAllFromFile("a_example.txt");
+            CalculateSolutionForInputFile("a_example.txt");
+            CalculateSolutionForInputFile("b_read_on.txt");
+            CalculateSolutionForInputFile("c_incunabula.txt");
+            CalculateSolutionForInputFile("d_tough_choices.txt");
+            CalculateSolutionForInputFile("e_so_many_books.txt");
+            CalculateSolutionForInputFile("f_libraries_of_the_world.txt");
+        }
+
+        private static void CalculateSolutionForInputFile(string inputFileName)
+        {
+            var libraryProblem = FileImporter.FileImporter.ReadAllFromFile(inputFileName);
 
             // Log.Information("Input is {@First}", inputFile);
 
@@ -51,12 +61,12 @@ namespace HashCode2020
                 availableLibrary.ForEach(x => x.MarkBooksAsProcessedByOtherLibrary(nextLibrary.KeyValue.Value));
             }
 
-            WriteOutputFile(librarySolution);
+            WriteOutputFile(librarySolution, inputFileName);
         }
 
-        public static void WriteOutputFile(List<LibraryInternSolution> librarySolution)
+        public static void WriteOutputFile(List<LibraryInternSolution> librarySolution, string inputFileName)
         {
-            using var streamWriter = File.CreateText("output.txt");
+            using var streamWriter = File.CreateText($"{inputFileName}_solution.txt");
             streamWriter.WriteLine(librarySolution.Count);
 
 

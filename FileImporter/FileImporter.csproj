@@ -10,6 +10,26 @@
       <Content Include="a_example.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="b_read_on.txt" />
+      <Content Include="b_read_on.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="c_incunabula.txt" />
+      <Content Include="c_incunabula.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="f_libraries_of_the_world.txt" />
+      <Content Include="f_libraries_of_the_world.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="e_so_many_books.txt" />
+      <Content Include="e_so_many_books.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="d_tough_choices.txt" />
+      <Content Include="d_tough_choices.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
