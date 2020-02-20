@@ -23,6 +23,7 @@ namespace FileImporter
                 var book = new Book(i, int.Parse(secondLineValues[i]));
                 books.Add(i, book);
             }
+            Books = books.ToImmutableDictionary();
 
             var libraryId = 0;
             var libraries = new Dictionary<int, Library>();
@@ -30,12 +31,11 @@ namespace FileImporter
             {
                 var firstLibraryLine = reader.ReadLine();
                 var secondLibraryLine = reader.ReadLine();
-                var library = new Library(libraryId, firstLibraryLine, secondLibraryLine);
+                var library = new Library(libraryId, firstLibraryLine, secondLibraryLine, Books);
                 libraries.Add(libraryId, library);
                 libraryId += 1;
             }
 
-            Books = books.ToImmutableDictionary();
             Libraries = libraries.ToImmutableDictionary();
         }
 
