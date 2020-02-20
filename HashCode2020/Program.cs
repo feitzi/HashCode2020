@@ -42,14 +42,14 @@ namespace HashCode2020
                 var index = 1;
                 var bestCandidateFound = false;
                 var nextLibrary = librariessSorted.First();
-                while (!bestCandidateFound || index < availableLibrary.Count)
+                while (!bestCandidateFound || index < librariessSorted.Count-1)
                 {
                     if (nextLibrary.DaysToFast <= 0)
                     {
                         break;
                     }
 
-                    if (availableLibrary[index].SetupTime < nextLibrary.DaysToFast)
+                    if (librariessSorted[index].libary.SetupTime < nextLibrary.DaysToFast)
                     {
                         nextLibrary = librariessSorted[index];
                         continue;
