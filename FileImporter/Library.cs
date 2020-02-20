@@ -50,7 +50,7 @@ namespace FileImporter
             var booksWhichAreProcessed = new List<Book>();
             for (int i = 0; i < maxPossibleBooksToProcess; i++)
             {
-                var book = books[i];
+                var book = BooksOrderedByScore[i];
                 possibleScore += book.Score;
                 booksWhichAreProcessed.Add(book);
             }
