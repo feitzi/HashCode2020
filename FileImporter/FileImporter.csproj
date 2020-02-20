@@ -9,6 +9,10 @@
       <Content Include="c_urgent.in">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="a_example.txt" />
+      <Content Include="a_example.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

@@ -4,8 +4,8 @@
     <e p="C:\sources\HashCode2020" t="IncludeFlat">
       <e p=".git\info\exclude" t="IncludeRecursive" />
       <e p="FileImporter" t="IncludeRecursive">
+        <e p="a_example.txt" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
-        <e p="c_urgent.in" t="Include" />
         <e p="FileImporter.cs" t="Include" />
         <e p="FileImporter.csproj" t="IncludeRecursive" />
         <e p="GoogleFile.cs" t="Include" />

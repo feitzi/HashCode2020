@@ -12,7 +12,7 @@ namespace HashCode2020
                 .WriteTo.Console()
                 .CreateLogger();
             
-           var inputFile = FileImporter.FileImporter.ReadAllFromFile("c_urgent.in");
+           var inputFile = FileImporter.FileImporter.ReadAllFromFile("txture@innsbruck ");
             
             Log.Information("Input is {@First}", inputFile.HeaderLine);
             
