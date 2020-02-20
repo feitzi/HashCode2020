@@ -62,6 +62,7 @@ namespace HashCode2020
                 availableDays -= nextLibrary.libary.SetupTime;
             }
 
+            librarySolution = librarySolution.Where(x => x.KeyValue.Value.Any()).ToList();
             WriteOutputFile(librarySolution, inputFileName);
         }
 
@@ -73,10 +74,6 @@ namespace HashCode2020
 
             librarySolution.ForEach(library =>
             {
-                if (!library.KeyValue.Value.Any())
-                {
-                    return;
-                }
                 streamWriter.WriteLine($"{library.libary.LibraryId} {library.KeyValue.Value.Count}");
                 streamWriter.WriteLine(string.Join(" ", library.KeyValue.Value.Select(x => x.Id)));
             });
