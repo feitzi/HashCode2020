@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using MoreLinq;
 
 namespace FileImporter
 {
@@ -17,7 +15,7 @@ namespace FileImporter
             BooksPerDay = int.Parse(firstLineValues[2]);
 
             var secondLineValues = secondLine.Split(" ");
-            BookIdsInLibrary = secondLineValues.Select(x => allBooks[int.Parse(x)]).ToDictionary(x => x.Id);
+            BookIdsInLibrary = secondLineValues.Select(x => allBooks[int.Parse((string) x)]).ToDictionary(x => x.Id);
             BooksOrderedByScore =
                 BookIdsInLibrary.Select(x => x.Value).OrderByDescending(x => x.Score).ToImmutableList();
         }
@@ -36,10 +34,10 @@ namespace FileImporter
             processedBooks.ForEach(x => BookIdsInLibrary.Remove(x.Id));
         }
 
-        public KeyValuePair<int, List<Book>> MaxPointsForPeriod(int availableDays, IDictionary<int, Book> books)
+        public LibraryInternSolution MaxPointsForPeriod(int availableDays, IDictionary<int, Book> books)
         {
             var workingPeriod = availableDays - SetupTime;
-            if (workingPeriod <= 0) return new KeyValuePair<int, List<Book>>(0, new List<Book>());
+            if (workingPeriod <= 0) return new LibraryInternSolution(this, new List<Book>(), 0);
 
             var possibleScore = 0;
             var maxPossibleBooksToProcess = workingPeriod * BooksPerDay;
@@ -54,7 +52,8 @@ namespace FileImporter
                 possibleScore += book.Score;
                 booksWhichAreProcessed.Add(book);
             }
-            return new KeyValuePair<int, List<Book>>(possibleScore, booksWhichAreProcessed);
+
+            return new LibraryInternSolution(this, booksWhichAreProcessed, possibleScore);
         }
     }
 }
