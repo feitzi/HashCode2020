@@ -15,8 +15,8 @@ namespace HashCode2020
                 .WriteTo.Console()
                 .CreateLogger();
             //
-            CalculateSolutionForInputFile("a_example.txt");
-            CalculateSolutionForInputFile("b_read_on.txt");
+          //  CalculateSolutionForInputFile("a_example.txt");
+         //   CalculateSolutionForInputFile("b_read_on.txt");
             CalculateSolutionForInputFile("f_libraries_of_the_world.txt");
             CalculateSolutionForInputFile("d_tough_choices.txt");
             CalculateSolutionForInputFile("e_so_many_books.txt");
@@ -31,10 +31,10 @@ namespace HashCode2020
 
             var availableDays = libraryProblem.Days;
             var librarySolution = new List<LibraryInternSolution>();
-            var availableLibrary = libraryProblem.Libraries.Select(x => x.Value).ToList();
+            var availableLibraries = libraryProblem.Libraries.Select(x => x.Value).ToList();
             while (availableDays > 0)
             {
-                var librariessSorted = availableLibrary
+                var librariessSorted = availableLibraries
                     .Select(x =>
                         x.MaxPointsForPeriod(availableDays, libraryProblem.Books))
                     .OrderByDescending(x => x.MaxScore).ToList();
@@ -67,11 +67,11 @@ namespace HashCode2020
                 }
 
                 librarySolution.Add(nextLibrary);
-                availableLibrary.Remove(nextLibrary.libary);
-                availableLibrary.ForEach(x => x.MarkBooksAsProcessedByOtherLibrary(nextLibrary.BooksProcessed));
+                availableLibraries.Remove(nextLibrary.libary);
+                availableLibraries.ForEach(x => x.MarkBooksAsProcessedByOtherLibrary(nextLibrary.BooksProcessed));
                 availableDays -= nextLibrary.libary.SetupTime;
 
-                availableLibrary = librariessSorted.Where(x => x.MaxScore > 0)
+                availableLibraries = librariessSorted.Where(x => x.MaxScore > 0)
                     .Select(x => x.libary)
                     .ToList();
             }
